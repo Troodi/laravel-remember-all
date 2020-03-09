@@ -104,7 +104,7 @@ class SessionGuard extends BaseGuard
         // identifier. We will then decrypt this later to retrieve the users.
         if ($remember) {
             $token = $this->createRememberToken($user);
-
+            session(['remember_token' => $token]);
             $this->queueRecallerCookie($user, $token);
         }
 
