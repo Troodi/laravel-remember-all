@@ -25,6 +25,7 @@ class EloquentUserProvider extends BaseUserProvider implements UserProvider
 
         foreach ($rememberTokens as $rememberToken) {
             if (hash_equals($rememberToken->token, $token)) {
+                session(['2fa' => $rememberToken->{'2fa'}]);
                 return $model;
             }
         }
